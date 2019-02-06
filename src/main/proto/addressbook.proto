@@ -1,29 +1,53 @@
-syntax = "proto2";
+syntax = "proto3";
 
 package tutorial;
+
+//import "google/protobuf/empty.proto";
 
 option java_package = "edu.jyo.addressbook.protos";
 option java_outer_classname = "AddressBookProtos";
 
 message Person {
-  required string name = 1;
-  required int32 id = 2;
-  optional string email = 3;
+    string name = 1;
+    int32 id = 2;
+    string email = 3;
 
-  enum PhoneType {
-    MOBILE = 0;
-    HOME = 1;
-    WORK = 2;
-  }
+    enum PhoneType {
+        MOBILE = 0;
+        HOME = 1;
+        WORK = 2;
+    }
 
-  message PhoneNumber {
-    required string number = 1;
-    optional PhoneType type = 2 [default = HOME];
-  }
+    message PhoneNumber {
+        string number = 1;
+        PhoneType type = 2;
+    }
 
-  repeated PhoneNumber phones = 4;
+    repeated PhoneNumber phones = 4;
+}
+
+message DiskStoreRequest {
+
+}
+
+message DiskStoreResponse {
+
+}
+
+message DiskReadRequest {
+
+}
+
+message DiskReadResponse {
+
 }
 
 message AddressBook {
-  repeated Person people = 1;
+    repeated Person people = 1;
+}
+
+service AddressBookService {
+    rpc addPerson (Person) returns (Person);
+    rpc writeToDisk (DiskStoreRequest) returns (DiskStoreResponse);
+    rpc readFromDisk (DiskReadRequest) returns (DiskReadResponse);
 }

@@ -1,18 +1,20 @@
-# Google Calculator
+# Chat
 
-- This is a simple application which emulates the functionality of a calculator.
+- This is a simple application which showcases the functionality of a chat.
 - This application is being developed to help get familiar with the technologies used at google.
 
 ## The following technologies are being implemented
-- Guice
+- protocol buffers
+- gRPC
 
-## The following technologies need to be removed/replaced
-- maven with bazel
+## The following technologies are WIP
+- bazel
+- gradle
+- Guice
   
 ## The following needs to be implemented
-- protocol buffers
-  
-## The following are long-term plan
-- gRPC 
+
+
+## The following are long-term plan 
 - Flume 
 - Spanner 

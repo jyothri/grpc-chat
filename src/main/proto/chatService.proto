@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package tutorial;
+
+option java_package = "edu.jyo.greet.service.protos";
+option java_outer_classname = "ChatEngineProtos";
+
+message ChatRequest {
+    int32 id = 1;
+    string name = 2;
+    string message = 3;
+}
+
+message ChatResponse {
+    int32 id = 1;
+    string name = 2;
+    string message = 3;
+}
+
+service ChatService {
+    // Sends a message
+    rpc chat (stream ChatRequest) returns (stream ChatResponse) {
+    }
+}

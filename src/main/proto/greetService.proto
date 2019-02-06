@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package tutorial;
+
+option java_package = "edu.jyo.greet.service.protos";
+option java_outer_classname = "GreetEngineProtos";
+
+message GreetRequest {
+    string name = 1;
+    int32 id = 2;
+    string email = 3;
+}
+
+message GreetResponse {
+    string message = 1;
+}
+
+service Greeter {
+    // Sends a greeting
+    rpc sayHello (GreetRequest) returns (GreetResponse) {
+    }
+}

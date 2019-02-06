@@ -1,0 +1,16 @@
+options:
+  languages: [ "java" ]
+  resolverType: "coursier"
+  resolvers:
+    - id: "mavencentral"
+      type: "default"
+      url: https://repo.maven.apache.org/maven2/
+  strictVisibility: true
+  transitivity: exports
+  
+dependencies:
+  io.grpc:
+    grpc:
+      modules: ["protobuf", "stub", "netty-shaded"]
+      version: "1.18.0"
+      lang: java

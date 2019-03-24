@@ -17,6 +17,6 @@ message GreetResponse {
 
 service Greeter {
     // Sends a greeting
-    rpc sayHello (GreetRequest) returns (GreetResponse) {
+    rpc SayHello (GreetRequest) returns (GreetResponse) {
     }
 }

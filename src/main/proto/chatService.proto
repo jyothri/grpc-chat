@@ -2,23 +2,35 @@ syntax = "proto3";
 
 package tutorial;
 
-option java_package = "edu.jyo.greet.service.protos";
+option java_package = "edu.jyo.chat.service.protos";
 option java_outer_classname = "ChatEngineProtos";
 
-message ChatRequest {
+message ChatMessage {
     int32 id = 1;
     string name = 2;
     string message = 3;
+    int32 roomId = 4;
 }
 
-message ChatResponse {
+message GetRoomsRequest {
+    int32 id = 1;
+}
+
+message ChatRoom {
     int32 id = 1;
     string name = 2;
-    string message = 3;
+    int32 count = 4;
+    bool public = 3;
+}
+
+message CreateRoomRequest {
+    int32 id = 1;
+    string name = 2;
 }
 
 service ChatService {
     // Sends a message
-    rpc chat (stream ChatRequest) returns (stream ChatResponse) {
-    }
+    rpc CreateRoom (CreateRoomRequest) returns (ChatRoom) { }       //simple
+    rpc GetRooms (GetRoomsRequest) returns (stream ChatRoom) { }    //server side streaming
+    rpc Chat (stream ChatMessage) returns (stream ChatMessage) { } //bi-directional stream
 }

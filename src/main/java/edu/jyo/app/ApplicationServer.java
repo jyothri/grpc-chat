@@ -1,5 +1,6 @@
 package edu.jyo.app;
 
+import edu.jyo.app.serviceimpl.ChatService;
 import edu.jyo.app.serviceimpl.GreeterService;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
@@ -28,6 +29,7 @@ public class ApplicationServer {
         this.port = port;
         this.grpcServer = serverBuilder
                 .addService(new GreeterService())
+                .addService(new ChatService())
                 .build();
     }
 
